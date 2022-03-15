@@ -16,4 +16,5 @@ type MgoCollection interface {
 	Update(selector, update interface{}) error
 	UpdateId(id, update interface{}) error
 	Upsert(selector, update interface{}) (*mgo.ChangeInfo, error)
+	UpdateAll(selector, update interface{}) (*mgo.ChangeInfo, error)
 }

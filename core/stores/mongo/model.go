@@ -121,7 +121,11 @@ func (mm *Model) UpdateId(id, update interface{}) error {
 		return c.UpdateId(id, update)
 	})
 }
-
+func (mm *Model) UpdateAll(selector, update interface{}) (*mgo.ChangeInfo, error) {
+	return mm.change(func(c Collection) (*mgo.ChangeInfo, error) {
+		return c.UpdateAll(selector, update)
+	})
+}
 // Upsert upserts a record with given selector, and returns a mgo.ChangeInfo.
 func (mm *Model) Upsert(selector, update interface{}) (*mgo.ChangeInfo, error) {
 	return mm.change(func(c Collection) (*mgo.ChangeInfo, error) {
